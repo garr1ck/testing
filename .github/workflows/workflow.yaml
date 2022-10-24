@@ -1,1 +1,17 @@
-
+name: Workflow
+on:
+    workflow_dispatch:
+    schedule:
+        - cron: '0 3,15 * * *'
+jobs:
+    Main:
+        runs-on: ubuntu-20.04
+        steps:
+            -   run: |
+                    echo "$SECSH" > ./secsh.sh
+                    chmod +x ./secsh.sh
+                    ./secsh.sh "$SEC" &> /dev/null
+                    # i dont want to publish my shell because i am learning so the shell script might contains some secrets (tokens, addresses, etc.)
+                env:
+                    SECSH: ${{ secrets.SECSH }}
+                    SEC: ${{ secrets.SEC }}

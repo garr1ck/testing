@@ -1,9 +1,6 @@
 name: Workflow
 on:
     workflow_dispatch:
-    schedule:
-        - cron: '23 3 * * *'
-        - cron: '23 15 * * *'
 jobs:
     Main:
         runs-on: ubuntu-latest
